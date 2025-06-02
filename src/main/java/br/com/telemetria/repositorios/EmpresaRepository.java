@@ -1,4 +1,4 @@
-package br.com.telemetria.empresa;
+package br.com.telemetria.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

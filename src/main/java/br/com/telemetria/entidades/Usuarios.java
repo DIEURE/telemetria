@@ -3,7 +3,11 @@ package br.com.telemetria.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
+import br.com.telemetria.ENUM.TipoAcesso;
+import br.com.telemetria.ENUM.TipoStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,9 +37,11 @@ public class Usuarios implements Serializable {
  
 	private String senha;
 	
-	private String tipo;
+	@Enumerated(value= EnumType.STRING)
+	private TipoAcesso tipo;
 	
-	private String status;
+	@Enumerated(value= EnumType.STRING)
+	private TipoStatus status;
 	
 	/* Uma abordagem comum para relacionar Usuário e Empresa é um relacionamento OneToMany, 
 	  onde uma empresa tem muitos usuários. 
@@ -49,7 +55,7 @@ public class Usuarios implements Serializable {
 	public Usuarios() {
 	}
 
-	public Usuarios(Long id, String nome, String email, String senha, String tipo, String status) {
+	public Usuarios(Long id, String nome, String email, String senha, TipoAcesso tipo, TipoStatus status) {
 		this.id    = id;
 		this.nome  = nome;
 		this.email = email;
@@ -103,19 +109,19 @@ public class Usuarios implements Serializable {
 	
 	
 
-	public String getTipo() {
+	public TipoAcesso getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoAcesso tipo) {
 		this.tipo = tipo;
 	}
 
-	public String getStatus() {
+	public TipoStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(TipoStatus status) {
 		this.status = status;
 	}
 
